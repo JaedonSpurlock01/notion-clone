@@ -4,6 +4,7 @@ import { ChevronsLeft, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { UserItem } from "./user-item";
 
 import { cn } from "@/lib/utils";
 
@@ -18,7 +19,7 @@ export const Navigation = () => {
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
   useEffect(() => {
-    if(isMobile){
+    if (isMobile) {
       collapse();
     } else {
       resetWidth();
@@ -26,10 +27,10 @@ export const Navigation = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    if(isMobile) {
+    if (isMobile) {
       collapse();
     }
-  }, [pathname, isMobile])
+  }, [pathname, isMobile]);
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -110,7 +111,7 @@ export const Navigation = () => {
           <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
-          <p>Action Items</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents</p>
@@ -132,7 +133,11 @@ export const Navigation = () => {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon onClick={resetWidth} className="h-6 w-6 text-muted-foreground" role="button" />
+            <MenuIcon
+              onClick={resetWidth}
+              className="h-6 w-6 text-muted-foreground"
+              role="button"
+            />
           )}
         </nav>
       </div>
